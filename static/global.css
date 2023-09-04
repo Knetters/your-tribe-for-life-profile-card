@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=IBM+Plex+Mono:ital,wght@0,200;0,300;0,400;1,300;1,400&display=swap');
+
+:root {
+    --green: #5ecf6d;
+    --yellow: #dcca40;
+    --red: #e13535;
+    --blue: #4992f9;
+    --darkGreen: #52f949;
+    --purple: #b068ef;
+    --white: #ffffff;
+    --grey: #9c9c9c;
+
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background: #6190e8; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #6190e8, #a7bfe8); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #6190e8, #a7bfe8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'IBM Plex Mono', sans-serif;
+    height: 100vh;
+}
+
+.terminal {
+    background-color: #262526;
+    height: 70vh;
+    width: 60vw;
+    margin-top: 10vh;
+    margin-left: 20vw;
+    border-radius: .4em;
+    border: 1px solid #000000;
+    color: #fff;
+    position: fixed;
+    transition: .2s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Grid layout */
+.toolbar-grid {  
+    display: grid;
+    padding: .4rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    grid-template-columns: 2.2fr 1fr 2.2fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    color: var(--white);
+    grid-auto-flow: row;
+    grid-template-areas:
+      "toolbar-grid-buttons toolbar-grid-title toolbar-grid-version";
+  }
+  
+.toolbar-grid-buttons { 
+    grid-area: toolbar-grid-buttons; 
+}
+  
+.toolbar-grid-title { 
+    grid-area: toolbar-grid-title; 
+    text-align: center;
+}
+  
+.toolbar-grid-version { 
+    grid-area: toolbar-grid-version; 
+    text-align: right;
+}
+
+/* Taskbar  */
+.task-bar {
+    background: rgba(236, 236, 236, 0.73);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.4px);
+    -webkit-backdrop-filter: blur(5.4px);
+    width: 100vw;
+    position: absolute;
+}
+
+.task-bar p {
+    font-size: .9rem;
+    color: #000;
+}
+
+.task-bar-labels {
+    word-spacing: 1.5rem;
+    margin-left: 1rem;
+}
+
+.date-time-output {
+    word-spacing: .8rem;
+    margin-right: 1rem;
+}
+
+.task-bar:hover {
+    cursor: pointer;
+}
+
+.inner-terminal {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.terminal-toolbar {
+    background-color: #1f1e1e;
+    width: 100%;
+    position: absolute;
+    border-radius: 10px 10px 0 0;
+}
+
+.toolbar-row {
+    padding: .4rem;
+}
+
+.toolbar-icon {
+    margin-right: .5rem;
+}
+
+.toolbar-icon:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+
+.terminal-content {
+    padding: 1rem;
+}
+
+.bottom-spacing {
+    margin-bottom: 1rem;
+}
+
+.terminal-view {
+    display: none;
+}
+
+.terminal-width {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    border-radius: 0rem;
+}
+
+.terminal-toolbar-width {
+  border-radius: 0rem;
+}
+
+.drag-bar {
+  z-index: 10;
+}
+
+.welcome-msg-margin {
+  margin-top: 1.5rem;
+}
+
+/* Styling input fields */
+.terminal-input {
+background-color: inherit;
+  border: none;
+  outline: 0;
+  color: #fff;
+  font-family: 'IBM Plex Mono', sans-serif;
+  font-size: .8rem;
+  padding: 0;
+  margin: 0;
+  width: 50%;
+}
+
+.terminal-input:focus {
+    outline: none;
+}
+
+/* Typografie */
+.terminal-toolbar p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: -.5rem 0 .5rem 0;
+    padding: 0;
+    width: 5rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: 300;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: .8rem;
+}
+
+.text-art-style {
+    white-space: pre;
+    color: var(--green);
+    margin-bottom: .5rem;
+}
+
+/* Application icon */
+.row {
+    position: absolute;
+    padding: 2rem;
+    margin-top: 1rem;
+}
+
+.terminal-application-icon:hover {
+    cursor: pointer;
+}
+
+.terminal-application-icon:focus {
+    background-color: #89a2c8ca;
+    border: 2px solid #457ed3ea;
+    border-radius: .4rem;
+}
+
+.terminal-icon {
+    width: 5rem;
+}
+
+.help-command {
+    width: 10rem;
+    display: inline-block;
+}
+
+.help-description {
+    margin-left: 1rem;
+}
+
+.info-label {
+    width: 10rem;
+    display: inline-block;
+}
+
+.info-description {
+    margin-left: 1rem;
+}
+
+/* Text colors */
+.red {
+    color: var(--red);
+}
+
+.yellow {
+    color: var(--yellow);
+}
+
+.green {
+    color: var(--green);
+}
+
+.dark-green {
+    color: var(--darkGreen);
+}
+
+.blue {
+    color: var(--blue);
+}
+
+.grey {
+    color: var(--grey);
+}
+
+.purple {
+    color: var(--purple);
+}
+
+.white {
+    color: var(--white);
+}
+
+/* Media queries */
+@media only screen and (max-width: 800px) {
+    .terminal {
+        background-color: #262526;
+        height: 100vh;
+        width: 100vw;
+        margin-top: 0vh;
+        margin-left: 0vw;
+        border-radius: 0em;
+        border: none;
+        color: #fff;
+    }
+
+    /* Typografie */
+    .text-art-style {
+        white-space: pre;
+        color: #5ecf6d;
+        font-size: .6rem;
+    }
+  }
