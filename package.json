@@ -5,13 +5,20 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"slicemachine": "start-slicemachine"
 	},
 	"devDependencies": {
+		"@slicemachine/adapter-sveltekit": "^0.3.13",
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
+		"slice-machine-ui": "^1.11.0",
 		"svelte": "^4.0.5",
 		"vite": "^4.4.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@prismicio/client": "^7.2.0",
+		"@prismicio/svelte": "^0.1.2"
+	}
 }
