@@ -1,0 +1,28 @@
+{
+  "id": "taskbar_labels",
+  "type": "SharedSlice",
+  "name": "TaskbarLabels",
+  "description": "TaskbarLabels",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "labels": {
+          "type": "StructuredText",
+          "config": {
+            "label": "labels",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
