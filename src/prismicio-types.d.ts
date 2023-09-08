@@ -4,82 +4,124 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type PageDocumentDataSlicesSlice = never;
+type HomeDocumentDataSlicesSlice = never;
 
 /**
- * Content for Page documents
+ * Content for home documents
  */
-interface PageDocumentData {
+interface HomeDocumentData {
   /**
-   * Slice Zone field in *Page*
+   * name field in *home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * nickname field in *home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.nickname
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  nickname: prismic.RichTextField;
+
+  /**
+   * bio field in *home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.bio
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  bio: prismic.RichTextField;
+
+  /**
+   * github field in *home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.github
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  github: prismic.RichTextField;
+
+  /**
+   * icon field in *home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *home*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: page.slices[]
+   * - **API ID Path**: home.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<PageDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: home.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
 }
 
 /**
- * Page document from Prismic
+ * home document from Prismic
  *
- * - **API ID**: `page`
+ * - **API ID**: `home`
  * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type PageDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
+export type HomeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = PageDocument;
-
-/**
- * Primary content in *Taskbar → Primary*
- */
-export interface TaskbarSliceDefaultPrimary {
-  /**
-   * labels field in *Taskbar → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: taskbar.primary.labels
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  labels: prismic.RichTextField;
-}
-
-/**
- * Default variation for Taskbar Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TaskbarSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<TaskbarSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *Taskbar*
- */
-type TaskbarSliceVariation = TaskbarSliceDefault;
-
-/**
- * Taskbar Shared Slice
- *
- * - **API ID**: `taskbar`
- * - **Description**: Taskbar
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type TaskbarSlice = prismic.SharedSlice<
-  "taskbar",
-  TaskbarSliceVariation
->;
+export type AllDocumentTypes = HomeDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -91,14 +133,10 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      PageDocument,
-      PageDocumentData,
-      PageDocumentDataSlicesSlice,
+      HomeDocument,
+      HomeDocumentData,
+      HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
-      TaskbarSlice,
-      TaskbarSliceDefaultPrimary,
-      TaskbarSliceVariation,
-      TaskbarSliceDefault,
     };
   }
 }

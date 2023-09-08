@@ -1,14 +1,9 @@
-import { createClient } from '$lib/prismicio';
+import { createClient } from "$lib/prismicio"
 
-export const prerender = true;
+export async function load({fetch, request}){
+    const client = createClient({fetch, request})
 
-/** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
-	const client = createClient();
+    const document = await client.getByUID('home', 'homepage')
 
-	const page = await client.getByUID('page', params.uid);
-
-	return {
-		page
-	};
+    return document.data
 }
