@@ -79,7 +79,7 @@ function version() {
 
 // Function that redirects the user to my GitHub profile
 function github() {
-            output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="red">admin </span><span class="red">> </span>${input.value}</p>`);
+            output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="green">admin </span><span class="red">> </span>${input.value}</p>`);
 
             output.insertAdjacentHTML('beforeend', `<p>Requesting GitHub profile: <span class="yellow">Knetters</span></p>`);
 
@@ -108,7 +108,7 @@ function github() {
 
 // Function that gives the user info
         function info() {
-            output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="red">admin </span><span class="red">> </span>${input.value}</p>`);
+            output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="green">admin </span><span class="red">> </span>${input.value}</p>`);
             
             output.insertAdjacentHTML('beforeend', `<p>Progress: <span id="progressBar">░░░░░░░░░░░░░░░░░░░░</span></p>`);
             const progressBars = document.querySelectorAll("#progressBar");
