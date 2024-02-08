@@ -79,75 +79,66 @@ function version() {
 
 // Function that redirects the user to my GitHub profile
 function github() {
-    output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="green">admin </span><span class="red">> </span>${input.value}</p>`);
+            output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="red">admin </span><span class="red">> </span>${input.value}</p>`);
 
-    fetch('https://whois.fdnd.nl/api/v1/member/mals')
-    .then(response => response.json())
-    .then(data => {
-        const member = data.member;
-        output.insertAdjacentHTML('beforeend', `<p>Requesting GitHub profile: <span class="yellow">${member.gitHubHandle}</span></p>`);
+            output.insertAdjacentHTML('beforeend', `<p>Requesting GitHub profile: <span class="yellow">Knetters</span></p>`);
 
-        output.insertAdjacentHTML('beforeend', `<p>Progress: <span id="progressBar">░░░░░░░░░░░░░░░░░░░░</span></p>`);
-        const progressBars = document.querySelectorAll("#progressBar");
-        const progressBar = progressBars[progressBars.length - 1];
+            output.insertAdjacentHTML('beforeend', `<p>Progress: <span id="progressBar">░░░░░░░░░░░░░░░░░░░░</span></p>`);
+            const progressBars = document.querySelectorAll("#progressBar");
+            const progressBar = progressBars[progressBars.length - 1];
 
-        let bar = "░░░░░░░░░░░░░░░░░░░░";
+            let bar = "░░░░░░░░░░░░░░░░░░░░";
 
-        function fillBar() {
-            let i = 0;
-            let interval = setInterval(function() {
-                if (i === bar.length) {
-                    clearInterval(interval);
-                        window.open('https://github.com/' + `${member.gitHubHandle}`, '_blank');
-                    return;
-                }
-                bar = bar.substring(0, i) + "▓" + bar.substring(i + 1);
-                progressBar.innerHTML = bar;
-                i++;
-            }, 1000 / bar.length);
+            function fillBar() {
+                let i = 0;
+                let interval = setInterval(function() {
+                    if (i === bar.length) {
+                        clearInterval(interval);
+                            window.open('https://github.com/knetters', '_blank');
+                        return;
+                    }
+                    bar = bar.substring(0, i) + "▓" + bar.substring(i + 1);
+                    progressBar.innerHTML = bar;
+                    i++;
+                }, 1000 / bar.length);
+            }
+
+            fillBar();
         }
 
-        fillBar();
-    });  
-}
-
 // Function that gives the user info
-function info() {
-    output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="green">admin </span><span class="red">> </span>${input.value}</p>`);
-    
-    output.insertAdjacentHTML('beforeend', `<p>Progress: <span id="progressBar">░░░░░░░░░░░░░░░░░░░░</span></p>`);
-    const progressBars = document.querySelectorAll("#progressBar");
-    const progressBar = progressBars[progressBars.length - 1];
+        function info() {
+            output.insertAdjacentHTML('beforeend', `<p><span class="blue">~/tmp/users</span> <span class="red">admin </span><span class="red">> </span>${input.value}</p>`);
+            
+            output.insertAdjacentHTML('beforeend', `<p>Progress: <span id="progressBar">░░░░░░░░░░░░░░░░░░░░</span></p>`);
+            const progressBars = document.querySelectorAll("#progressBar");
+            const progressBar = progressBars[progressBars.length - 1];
 
-    let bar = "░░░░░░░░░░░░░░░░░░░░";
+            let bar = "░░░░░░░░░░░░░░░░░░░░";
 
-    function fillBar() {
-        let i = 0;
-        let interval = setInterval(function() {
-            if (i === bar.length) {
-                clearInterval(interval);
-                fetch('https://whois.fdnd.nl/api/v1/member/mals')
-                    .then(response => response.json())
-                    .then(data => {
-                        const member = data.member;
-                        output.insertAdjacentHTML('beforeend', `
+            function fillBar() {
+                let i = 0;
+                let interval = setInterval(function() {
+                    if (i === bar.length) {
+                        clearInterval(interval);
+                            output.insertAdjacentHTML('beforeend', `
                             <p><span class="yellow" aria-hidden="true">=====></span> Information <span class="yellow" aria-hidden="true">=====></span></p>
-                            <p><span class="info-label">Name:</span> <span class="info-description green">${member.name} ${member.surname}</span></p>
-                            <p><span class="info-label">Email:</span> <span class="info-description green">${member.nickname}</span></p>
-                            <p><span class="info-label">Occupation:</span> <span class="info-description green">${member.bio.html}</span></p>
-                            <p><span class="info-label">GitHub Name:</span> <span class="info-description yellow">${member.gitHubHandle}</span></p>
+                            <p><span class="info-label">Name:</span> <span class="info-description green">Thomas Scheepers</span></p>
+                            <p><span class="info-label">Age:</span> <span class="info-description green">23y</span></p>
+                            <p><span class="info-label">Gender:</span> <span class="info-description green">Male</span></p>
+                            <p><span class="info-label">Email:</span> <span class="info-description green">thomas@scheepers.com</span></p>
+                            <p><span class="info-label">GitHub Name:</span> <span class="info-description yellow">Knetters</span></p>
                         `);
-                    });
-                return;
+                        return;
+                    }
+                    bar = bar.substring(0, i) + "▓" + bar.substring(i + 1);
+                    progressBar.innerHTML = bar;
+                    i++;
+                }, 1000 / bar.length);
             }
-            bar = bar.substring(0, i) + "▓" + bar.substring(i + 1);
-            progressBar.innerHTML = bar;
-            i++;
-        }, 1000 / bar.length);
-    }
 
-    fillBar();
-}
+            fillBar();
+        }
 
 // Function that gives the user info
 function time() {
